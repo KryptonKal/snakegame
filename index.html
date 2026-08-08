@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game with Sound & Theme</title>
-      <style>
-          * {
+       <style>
+           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-          }
+           }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,14 +19,14 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-          }
+           }
 
-          .game-container {
+           .game-container {
             background: var(--container-bg);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-          }
+           }
 
         h1 {
             text-align: center;
@@ -35,9 +35,9 @@
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-          }
+           }
 
-          .score-board {
+           .score-board {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
@@ -46,34 +46,34 @@
             border-radius: 10px;
             color: var(--score-text);
             font-size: 1.2rem;
-          }
+           }
 
-          .score-board span {
+           .score-board span {
             font-weight: bold;
-          }
+           }
 
-          #gameCanvas {
+           #gameCanvas {
             display: block;
             margin: 0 auto;
             border-radius: 10px;
             background: var(--canvas-bg);
-          }
+           }
 
-          .controls {
+           .controls {
             text-align: center;
             margin-top: 25px;
             padding: 15px;
             background: var(--controls-bg);
             border-radius: 10px;
-          }
+           }
 
-          .controls p {
+           .controls p {
             color: var(--controls-text);
             margin-bottom: 10px;
             font-size: 0.95rem;
-          }
+           }
 
-          .key-hint {
+           .key-hint {
             display: inline-block;
             background: var(--key-bg);
             color: var(--key-text);
@@ -82,9 +82,9 @@
             margin: 0 3px;
             font-size: 0.85rem;
             font-weight: bold;
-          }
+           }
 
-          #gameOver {
+           #gameOver {
             display: none;
             position: fixed;
             top: 50%;
@@ -97,15 +97,15 @@
             text-align: center;
             font-size: 2rem;
             z-index: 1000;
-          }
+           }
 
-          #gameOver h2 {
+           #gameOver h2 {
             margin-bottom: 20px;
             font-size: 2.5rem;
             color: var(--overlay-title);
-          }
+           }
 
-          .btn-restart {
+           .btn-restart {
             background: var(--button-bg);
             color: var(--button-text);
             border: none;
@@ -115,19 +115,19 @@
             cursor: pointer;
             margin-top: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
-          }
+           }
 
-          .btn-restart:hover {
+           .btn-restart:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
-          }
+           }
 
          canvas {
             border-radius: 10px;
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
-          }
+           }
 
-          .sound-toggle {
+           .sound-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -139,13 +139,13 @@
             font-size: 1rem;
             cursor: pointer;
             z-index: 999;
-          }
+           }
 
-          .sound-toggle:hover {
+           .sound-toggle:hover {
             background: var(--sound-btn-bg-hover);
-          }
+           }
 
-          .theme-toggle {
+           .theme-toggle {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -157,108 +157,108 @@
             font-size: 1rem;
             cursor: pointer;
             z-index: 999;
-          }
+           }
 
-          .theme-toggle:hover {
+           .theme-toggle:hover {
             background: var(--sound-btn-bg-hover);
-          }
+           }
 
-          /* Default Light Theme */
-          :root {
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --container-bg: rgba(255, 255, 255, 0.95);
-            --primary-text: #2d3748;
-            --score-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --score-text: #ffffff;
-            --canvas-bg: #f5f5f5;
-            --controls-bg: #f0f0f0;
-            --controls-text: #4a5568;
-            --key-bg: #667eea;
-            --key-text: #ffffff;
-            --overlay-bg: rgba(0, 0, 0, 0.9);
-            --overlay-text: #ffffff;
-            --overlay-title: #ff6b6b;
-            --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --button-text: #ffffff;
-            --sound-btn-bg: rgba(0, 0, 0, 0.7);
-            --sound-btn-text: #ffffff;
-            --sound-btn-bg-hover: rgba(0, 0, 0, 0.9);
-          }
+           /* Default Light Theme */
+           :root {
+             --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             --container-bg: rgba(255, 255, 255, 0.95);
+             --primary-text: #2d3748;
+             --score-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             --score-text: #ffffff;
+             --canvas-bg: #f5f5f5;
+             --controls-bg: #f0f0f0;
+             --controls-text: #4a5568;
+             --key-bg: #667eea;
+             --key-text: #ffffff;
+             --overlay-bg: rgba(0, 0, 0, 0.9);
+             --overlay-text: #ffffff;
+             --overlay-title: #ff6b6b;
+             --button-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             --button-text: #ffffff;
+             --sound-btn-bg: rgba(0, 0, 0, 0.7);
+             --sound-btn-text: #ffffff;
+             --sound-btn-bg-hover: rgba(0, 0, 0, 0.9);
+           }
 
-          /* Dark Theme */
-          [data-theme="dark"] {
-            --bg-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            --container-bg: rgba(30, 30, 35, 0.95);
-            --primary-text: #f7fafc;
-            --score-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-            --score-text: #cbd5e0;
-            --canvas-bg: #1a202c;
-            --controls-bg: rgba(45, 53, 72, 0.8);
-            --controls-text: #edf2f7;
-            --key-bg: #4a5568;
-            --key-text: #f7fafc;
-            --overlay-bg: rgba(17, 17, 17, 0.95);
-            --overlay-text: #ffffff;
-            --overlay-title: #ff6b6b;
-            --button-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-            --button-text: #ffffff;
-            --sound-btn-bg: rgba(255, 255, 255, 0.1);
-            --sound-btn-text: #ffffff;
-            --sound-btn-bg-hover: rgba(255, 255, 255, 0.2);
-          }
+           /* Dark Theme */
+           [data-theme="dark"] {
+             --bg-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+             --container-bg: rgba(30, 30, 35, 0.95);
+             --primary-text: #f7fafc;
+             --score-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+             --score-text: #cbd5e0;
+             --canvas-bg: #1a202c;
+             --controls-bg: rgba(45, 53, 72, 0.8);
+             --controls-text: #edf2f7;
+             --key-bg: #4a5568;
+             --key-text: #f7fafc;
+             --overlay-bg: rgba(17, 17, 17, 0.95);
+             --overlay-text: #ffffff;
+             --overlay-title: #ff6b6b;
+             --button-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+             --button-text: #ffffff;
+             --sound-btn-bg: rgba(255, 255, 255, 0.1);
+             --sound-btn-text: #ffffff;
+             --sound-btn-bg-hover: rgba(255, 255, 255, 0.2);
+           }
 
-          [data-theme="dark"] .btn-restart:hover {
+           [data-theme="dark"] .btn-restart:hover {
              box-shadow: 0 10px 30px rgba(138, 149, 167, 0.5);
-          }
+           }
 
-          [data-theme="dark"] canvas {
+           [data-theme="dark"] canvas {
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
-          }
+           }
 
-      </style>
+       </style>
 </head>
 <body>
-     <button class="sound-toggle" onclick="toggleSound()">🔊 Sound: ON</button>
-     <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+      <button class="sound-toggle" onclick="toggleSound()">🔊 Sound: ON</button>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
      
-     <div class="game-container">
-         <h1>🐍 Snake Game</h1>
+      <div class="game-container">
+          <h1>🐍 Snake Game</h1>
          
-         <div class="score-board">
-             <span>Score: <span id="score">0</span></span>
-             <span>High Score: <span id="highScore">0</span></span>
-         </div>
+          <div class="score-board">
+              <span>Score: <span id="score">0</span></span>
+              <span>High Score: <span id="highScore">0</span></span>
+          </div>
 
-         <canvas id="gameCanvas" width="600" height="400"></canvas>
+          <canvas id="gameCanvas" width="600" height="400"></canvas>
 
-         <div class="controls">
-             <p>Use arrow keys to control the snake:</p>
-             <p>
-                 <span class="key-hint">↑</span>
-                 <span class="key-hint">↓</span>
-                 <span class="key-hint">←</span>
-                 <span class="key-hint">→</span>
-             </p>
-             <p>Press <strong>Enter</strong> or <strong>Space</strong> to restart after game over</p>
-         </div>
+          <div class="controls">
+              <p>Use arrow keys to control the snake:</p>
+              <p>
+                  <span class="key-hint">↑</span>
+                  <span class="key-hint">↓</span>
+                  <span class="key-hint">←</span>
+                  <span class="key-hint">→</span>
+              </p>
+              <p>Press <strong>Enter</strong> or <strong>Space</strong> to restart after game over</p>
+          </div>
 
-         <button id="restartBtn" class="btn-restart" onclick="location.reload()">Play Again</button>
-     </div>
+          <button id="restartBtn" class="btn-restart" onclick="location.reload()">Play Again</button>
+      </div>
 
-     <div id="gameOver">
-         <h2>Game Over!</h2>
-         <p>Final Score: <span id="finalScore">0</span></p>
-         <button onclick="location.reload()" class="btn-restart">Play Again</button>
-     </div>
+      <div id="gameOver">
+          <h2>Game Over!</h2>
+          <p>Final Score: <span id="finalScore">0</span></p>
+          <button onclick="restartGame()" class="btn-restart">Play Again</button>
+      </div>
 
-     <script>
-         // Game Configuration
+      <script>
+          // Game Configuration
          const gridSize = 20;
          const tileCountX = 30;
          const tileCountY = 20;
          const gameSpeed = 100; // ms per frame
 
-          // Game State Variables
+           // Game State Variables
          let snake = [];
          let food = { x: 0, y: 0 };
          let direction = 'right';
@@ -269,23 +269,23 @@
          let isGameOver = false;
          let soundEnabled = true;
          
-         // Theme state
+           // Theme state
          let currentTheme = document.body.getAttribute('data-theme') || 'light';
 
-          // Canvas Setup
+           // Canvas Setup
          const canvas = document.getElementById('gameCanvas');
          const ctx = canvas.getContext('2d');
 
-          // Sound Effects - Using AudioContext for no external dependencies
+           // Sound Effects - Using AudioContext for no external dependencies
          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
          
          function playSound(type) {
              if (!soundEnabled) return;
              
-              // Ensure audio context is running (user interaction required in modern browsers)
+               // Ensure audio context is running (user interaction required in modern browsers)
              if (audioCtx.state === 'suspended') {
                  audioCtx.resume();
-             }
+              }
              
              try {
                  const oscillator = audioCtx.createOscillator();
@@ -296,7 +296,7 @@
                  
                  switch(type) {
                      case 'eat':
-                          // Pleasant ding sound for eating food
+                           // Pleasant ding sound for eating food
                         oscillator.type = 'sine';
                         oscillator.frequency.setValueAtTime(523.25, audioCtx.currentTime);
                         oscillator.frequency.exponentialRampToValueAtTime(1046.5, audioCtx.currentTime + 0.1);
@@ -307,7 +307,7 @@
                         break;
                     
                      case 'crash':
-                          // Dramatic crash sound
+                           // Dramatic crash sound
                         oscillator.type = 'sawtooth';
                         oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
                         oscillator.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
@@ -318,7 +318,7 @@
                         break;
                     
                      case 'turn':
-                          // Subtle sound for direction changes
+                           // Subtle sound for direction changes
                         oscillator.type = 'triangle';
                         oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
                         gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
@@ -326,19 +326,19 @@
                         oscillator.start(audioCtx.currentTime);
                         oscillator.stop(audioCtx.currentTime + 0.05);
                         break;
-                 }
-             } catch (e) {
+                  }
+              } catch (e) {
                 console.log('Audio not supported');
-             }
-         }
+              }
+          }
 
-          // Initialize Game
+           // Initialize Game
          function initGame() {
              snake = [
-                  { x: 5, y: 10 },
-                  { x: 4, y: 10 },
-                  { x: 3, y: 10 }
-              ];
+                   { x: 5, y: 10 },
+                   { x: 4, y: 10 },
+                   { x: 3, y: 10 }
+               ];
             direction = 'right';
             nextDirection = 'right';
             score = 0;
@@ -346,28 +346,39 @@
             spawnFood();
             isGameOver = false;
             
+             // Hide Game Over screen if it's visible
+             const gameOverDiv = document.getElementById('gameOver');
+             if (gameOverDiv) {
+                 gameOverDiv.style.display = 'none';
+             }
+             
             if (gameLoop) clearTimeout(gameLoop);
             gameLoop = setTimeout(gameUpdate, gameSpeed);
+          }
+
+           // Restart Game Function (used by button in Game Over screen)
+         function restartGame() {
+             location.reload();
          }
 
-          // Spawn Food at Random Position
+           // Spawn Food at Random Position
          function spawnFood() {
              do {
                  food.x = Math.floor(Math.random() * tileCountX);
                  food.y = Math.floor(Math.random() * tileCountY);
-             } while (snake.some(segment => segment.x === food.x && segment.y === food.y));
-         }
+              } while (snake.some(segment => segment.x === food.x && segment.y === food.y));
+          }
 
-          // Update Game State
+           // Update Game State
          function gameUpdate() {
              if (isGameOver) return;
 
-              // Get current direction from queue
+               // Get current direction from queue
              direction = nextDirection;
 
              const head = { ...snake[0] };
 
-              // Move based on direction
+               // Move based on direction
              switch(direction) {
                  case 'right':
                      head.x += 1;
@@ -381,55 +392,55 @@
                  case 'down':
                      head.y += 1;
                      break;
-             }
+              }
 
-              // Check Wall Collision
+               // Check Wall Collision
              if (head.x < 0 || head.x >= tileCountX || head.y < 0 || head.y >= tileCountY) {
                  gameOver();
                  return;
-             }
+              }
 
-              // Check Self Collision
+               // Check Self Collision
              if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
                  gameOver();
                  return;
-             }
+              }
 
-              // Add new head
+               // Add new head
              snake.unshift(head);
 
-              // Check Food Collision
+               // Check Food Collision
              if (head.x === food.x && head.y === food.y) {
                  score += 10;
                  document.getElementById('score').textContent = score;
                  
-                  // Save High Score
+                   // Save High Score
                  if (score > highScore) {
                      highScore = score;
                      localStorage.setItem('snakeHighScore', highScore);
                      document.getElementById('highScore').textContent = highScore;
-                  }
+                   }
 
                  playSound('eat');
                  spawnFood();
-             } else {
+              } else {
                  snake.pop();
-             }
+              }
 
             drawGame();
             
             if (!isGameOver) {
                 gameLoop = setTimeout(gameUpdate, gameSpeed);
-            }
-         }
+             }
+          }
 
-          // Draw Game
+           // Draw Game
          function drawGame() {
-              // Clear Canvas
+               // Clear Canvas
              ctx.fillStyle = '#f5f5f5';
              ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-              // Draw Grid (optional - for visual reference)
+               // Draw Grid (optional - for visual reference)
              ctx.strokeStyle = '#e0e0e0';
              ctx.lineWidth = 1;
              
@@ -438,33 +449,33 @@
                  ctx.moveTo(i * gridSize, 0);
                  ctx.lineTo(i * gridSize, canvas.height);
                  ctx.stroke();
-              }
+               }
 
              for (let j = 0; j <= tileCountY; j++) {
                  ctx.beginPath();
                  ctx.moveTo(0, j * gridSize);
                  ctx.lineTo(canvas.width, j * gridSize);
                  ctx.stroke();
-              }
+               }
 
-              // Draw Snake
+               // Draw Snake
              snake.forEach((segment, index) => {
-                  // Gradient colors for snake body
+                   // Gradient colors for snake body
                 const isHead = index === 0;
                 const gradient = isHead ? 
-                     'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' :
-                     'linear-gradient(135deg, #4a3b8c 0%, #5d4ca9 100%)';
+                      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' :
+                      'linear-gradient(135deg, #4a3b8c 0%, #5d4ca9 100%)';
                 
                 ctx.fillStyle = gradient;
                 if (isHead) {
                     ctx.shadowColor = '#667eea';
                     ctx.shadowBlur = 10;
-                   } else {
+                    } else {
                      ctx.shadowColor = 'transparent';
                      ctx.shadowBlur = 0;
-                   }
+                    }
                  
-                  // Draw rounded rectangle for snake segment
+                   // Draw rounded rectangle for snake segment
                 const padding = 2;
                 ctx.beginPath();
                 ctx.roundRect(
@@ -473,10 +484,10 @@
                     gridSize - padding * 2,
                     gridSize - padding * 2,
                     isHead ? 8 : 4
-                   );
+                    );
                 ctx.fill();
 
-                  // Draw eyes on head
+                   // Draw eyes on head
                 if (isHead) {
                     ctx.fillStyle = 'white';
                     const eyeSize = 5;
@@ -507,15 +518,15 @@
                             eyeX2 = segment.x * gridSize + gridSize - 8;
                             eyeY2 = segment.y * gridSize + gridSize - 3;
                             break;
-                       }
+                        }
                      
                      ctx.beginPath();
                      ctx.arc(eyeX1, eyeY1, eyeSize/2, 0, Math.PI * 2);
                      ctx.fill();
-                 }
-             });
+                  }
+              });
 
-              // Draw Food
+               // Draw Food
              ctx.fillStyle = '#ff6b6b';
              ctx.shadowColor = '#ff6b6b';
              ctx.shadowBlur = 15;
@@ -525,25 +536,25 @@
                  food.x * gridSize + gridSize/2,
                  food.y * gridSize + gridSize/2,
                  gridSize/2 - 3,
-                   0,
+                    0,
                  Math.PI * 2
-              );
+               );
              ctx.fill();
 
-              // Draw Pulse Animation on Food
+               // Draw Pulse Animation on Food
              ctx.fillStyle = 'rgba(255, 107, 107, 0.6)';
              ctx.beginPath();
              ctx.arc(
                  food.x * gridSize + gridSize/2,
                  food.y * gridSize + gridSize/2,
                  gridSize/2 - 3,
-                   0,
+                    0,
                  Math.PI * 2
-              );
+               );
              ctx.fill();
-         }
+          }
 
-          // Game Over
+           // Game Over
          function gameOver() {
              isGameOver = true;
              clearTimeout(gameLoop);
@@ -551,62 +562,65 @@
              playSound('crash');
              
              document.getElementById('finalScore').textContent = score;
-             document.getElementById('gameOver').style.display = 'block';
+             const gameOverDiv = document.getElementById('gameOver');
+             if (gameOverDiv) {
+                 gameOverDiv.style.display = 'block';
+             }
              
              const gameContainer = document.querySelector('.game-container');
              gameContainer.style.cursor = 'not-allowed';
          }
 
-          // Sound Toggle Function
+           // Sound Toggle Function
          function toggleSound() {
              soundEnabled = !soundEnabled;
              const btn = document.querySelector('.sound-toggle');
              btn.textContent = soundEnabled ? '🔊 Sound: ON' : '🔇 Sound: OFF';
-         }
+          }
 
-          // Theme Toggle Function
+           // Theme Toggle Function
          function toggleTheme() {
              if (currentTheme === 'light') {
                  document.body.setAttribute('data-theme', 'dark');
                  currentTheme = 'dark';
                  const btn = document.querySelector('.theme-toggle');
                  btn.textContent = '☀️ Light Mode';
-             } else {
+              } else {
                  document.body.removeAttribute('data-theme');
                  currentTheme = 'light';
                  const btn = document.querySelector('.theme-toggle');
                  btn.textContent = '🌙 Dark Mode';
-             }
-         }
+              }
+          }
 
-          // Keyboard Controls - Single Event Listener
+           // Keyboard Controls - Single Event Listener
          document.addEventListener('keydown', (e) => {
              const keyMap = {
-                  'ArrowUp': direction !== 'down' ? () => { nextDirection = 'up'; playSound('turn'); } : null,
-                  'ArrowDown': direction !== 'up' ? () => { nextDirection = 'down'; playSound('turn'); } : null,
-                  'ArrowLeft': direction !== 'right' ? () => { nextDirection = 'left'; playSound('turn'); } : null,
-                  'ArrowRight': direction !== 'left' ? () => { nextDirection = 'right'; playSound('turn'); } : null,
-                  ' ': initGame,
-                  'Enter': initGame
-             };
+                   'ArrowUp': direction !== 'down' ? () => { nextDirection = 'up'; playSound('turn'); } : null,
+                   'ArrowDown': direction !== 'up' ? () => { nextDirection = 'down'; playSound('turn'); } : null,
+                   'ArrowLeft': direction !== 'right' ? () => { nextDirection = 'left'; playSound('turn'); } : null,
+                   'ArrowRight': direction !== 'left' ? () => { nextDirection = 'right'; playSound('turn'); } : null,
+                   ' ': initGame,
+                   'Enter': initGame
+              };
 
              const handler = keyMap[e.key];
              if (handler) {
                  e.preventDefault();
                  handler();
-              }
-         });
+               }
+          });
 
-          // Restart Button
+           // Restart Button
          document.getElementById('restartBtn').addEventListener('click', () => {
              location.reload();
-         });
+          });
 
-          // Start Game on Page Load
+           // Start Game on Page Load
          initGame();
 
-          // Draw initial state
+           // Draw initial state
          drawGame();
-     </script>
+      </script>
 </body>
 </html>
